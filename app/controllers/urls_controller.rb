@@ -1,4 +1,5 @@
 class UrlsController < ApplicationController
+  respond_to :html, :json
   # GET /urls
   # GET /urls.json
   def index
@@ -36,9 +37,9 @@ class UrlsController < ApplicationController
     @url = Url.new(params[:url])
 
     respond_to do |format|
-      if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
-        format.json { render json: @url, status: :created, location: @url }
+       if @url.save
+        format.html { redirect_to urls_path, notice: 'URL was successfully shortened.' }
+        format.json { render json: urls_path, status: :created, location: @url }
       else
         format.html { render action: "new" }
         format.json { render json: @url.errors, status: :unprocessable_entity }
@@ -48,19 +49,6 @@ class UrlsController < ApplicationController
 
   # PUT /urls/1
   # PUT /urls/1.json
-  def update
-    @url = Url.find(params[:id])
-
-    respond_to do |format|
-      if @url.update_attributes(params[:url])
-        format.html { redirect_to @url, notice: 'Url was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /urls/1
   # DELETE /urls/1.json

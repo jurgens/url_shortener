@@ -1,11 +1,11 @@
 %h1 Listing urls
 
-%table
+%table.table 
   %tr
     %th Url long
     %th Private
     %th Password digest
-    %th
+    %th Url short
     %th
     %th
 
@@ -14,6 +14,7 @@
       %td= url.url_long
       %td= url.private
       %td= url.password_digest
+      %td= url.url_short
       %td= link_to 'Show', url
       %td= link_to 'Destroy', url, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
