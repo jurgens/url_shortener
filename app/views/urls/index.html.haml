@@ -6,15 +6,17 @@
     %th Private
     %th Password digest
     %th Url short
+    %th Visited
     %th
     %th
 
   - @urls.each do |url|
     %tr
-      %td= url.url_long
+      %td= link_to url.url_long, url.url_long
       %td= url.private
       %td= url.password_digest
-      %td= url.url_short
+      %td= link_to url.url_short, "#{root_url}#{url.url_short}"
+      %td= url.visits.count
       %td= link_to 'Show', url
       %td= link_to 'Destroy', url, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

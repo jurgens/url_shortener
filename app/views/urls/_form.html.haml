@@ -11,10 +11,9 @@
     = f.text_field :url_long
   .field
     = f.label :private
-    = f.check_box :private, :value => false
-  - if @url.private? 
-    .field
-      = f.label :password_digest
-      = f.text_field :password_digest
+    = f.check_box :private
+  .field
+    = f.label :password_digest
+    = f.password_field :password_digest
   .actions
-    = f.submit 'Save'
+    = f.submit 'Shorten'

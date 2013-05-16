@@ -1,6 +1,10 @@
 UrlShortener::Application.routes.draw do
+  
   resources :urls
+  resources :visits
+  
   root :to => "urls#new"
+  match ":url_short" => 'visits#redirect'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

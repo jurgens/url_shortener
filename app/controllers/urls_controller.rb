@@ -38,8 +38,8 @@ class UrlsController < ApplicationController
 
     respond_to do |format|
        if @url.save
-        format.html { redirect_to urls_path, notice: 'URL was successfully shortened.' }
-        format.json { render json: urls_path, status: :created, location: @url }
+        format.html { redirect_to @url, notice: 'URL was successfully shortened.' }
+        format.json { render json: @url, status: :created, location: @url }
       else
         format.html { render action: "new" }
         format.json { render json: @url.errors, status: :unprocessable_entity }

@@ -2,10 +2,10 @@
 
 %p
   %b Url long:
-  = @url.url_short
+  = link_to @url.url_long, @url.url_long
 %p
   %b Url long:
-  = @url.url_short
+  = link_to @url.url_short, "#{root_url}#{@url.url_short}"
 %p
   %b Private:
   = @url.private

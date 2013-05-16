@@ -1,7 +1,11 @@
 class Url < ActiveRecord::Base
+
   attr_accessible :password_digest, :private, :url_long, :url_short
   before_save :set_url_short
-  
+  has_many :visits
+
+  validates :url_long, :format => { :with =>/htt(p|ps):\/\//, :on => :create}
+
   private
   def random_url
   	short =  "#{(('a'..'z').to_a + (1..9).to_a).shuffle[0..5].join}"
