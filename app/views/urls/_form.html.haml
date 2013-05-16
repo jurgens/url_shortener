@@ -1,4 +1,4 @@
-= form_for @url do |f|
+= form_for @url, autocomplete: 'off' do |f|
   - if @url.errors.any?
     #error_explanation
       %h2= "#{pluralize(@url.errors.count, "error")} prohibited this url from being saved:"
@@ -8,12 +8,25 @@
 
   .field
     = f.label :url_long
-    = f.text_field :url_long
+    = f.text_field :url_long, autocomplete: 'off'
   .field
     = f.label :private
     = f.check_box :private
-  .field
+  .field.password.hide
     = f.label :password_digest
-    = f.password_field :password_digest
+    = f.password_field :password_digest, autocomplete: 'off'
   .actions
     = f.submit 'Shorten'
+
+:javascript
+  $('#url_private').click(function(){
+    var checked = $(this).is(':checked');
+    if (checked)
+    {
+      $('.password').show();
+    }
+    else
+    {
+      $('.password').hide();
+    }
+  })
